@@ -1,0 +1,42 @@
+user - profile onetoone
+
+book  -  author manytomany
+
+
+blog - (FK)comments onetomany
+
+comments(FK) - blog manytoone
+ Object relational mapping 
+ Name error- something not defined
+ django forms -we use a comment form . to write a comment for a blog
+ ajax will have url, data, success 
+
+ C:\Users\AROKIAMARYRATHNAS\Desktop\myproject>/.env1/Scripts/activate
+The system cannot find the path specified.
+
+C:\Users\AROKIAMARYRATHNAS\Desktop\myproject>.\env1\Scripts\activate
+
+(env1) C:\Users\AROKIAMARYRATHNAS\Desktop\myproject>cd mysite
+
+(env1) C:\Users\AROKIAMARYRATHNAS\Desktop\myproject\mysite>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 05, 2021 - 20:06:33
+Django version 3.1.6, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+(env1) C:\Users\AROKIAMARYRATHNAS\Desktop\myproject\mysite>pip freeze > requirements.txt
+
+(env1) C:\Users\AROKIAMARYRATHNAS\Desktop\myproject\mysite>
+
+
+1. requirements.txt
+2. debug = falese
+
+
+
+GIT is used for Version control
+Collaboration 

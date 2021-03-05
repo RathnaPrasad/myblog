@@ -1,0 +1,34 @@
+  
+{% extends 'base.html' %}
+{% block content%}
+<div class="row">
+
+ {% for i in blogs %}
+   <div class="col-6">
+   <a href="{% url 'myapp:detail' i.pk %}">{{i.title}}</a>
+   <span id="like">{{i.likes}}</span><button onclick="Like()">Like</button>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript">
+   	    function Like(){
+   	    	var likes=document.getElementById('like').innerHTML
+   	    	$.ajax({
+   	    		url:"{% url 'myapp:like' %}",
+   	    		data:{'blog_id':{{i.id}},'likes':likes},
+   	    		success:function(data){
+   	    		  alert('im here')
+   	    		}
+
+   	    		   	})
+   	    }
+    </script>
+
+   <br>
+
+   <img height="300" width="300" src="{{i.image.url}}">
+</div>
+{% endfor %}
+</div>
+<br><br><br>
+{% endblock %}
+
+	

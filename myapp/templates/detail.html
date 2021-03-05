@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="row">
+	<div class="col-6">
+    <h1>{{blog.title}}</h1><a href="{% url 'myapp:update' blog.pk %}">Update</a>
+    <span id="like">{{blog.likes}}</span><button onclick="Like()">Like</button>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript">
+   	    function Like(){
+   	    	var likes=document.getElementById('like').innerHTML
+   	    	$.ajax({
+   	    		url:"{% url 'myapp:like' %}",
+   	    		data:{'blog_id':{{blog.pk}},'likes':likes},
+   	    		success:function(data){
+   	    		  
+   	    		   //alert('im here')
+
+   	    		  document.getElementById('like').innerHTML=data.likes
+   	    		}
+
+   	    		})
+   	    }
+    </script>
+    <br>
+
+     Description :{{blog.description|linebreaks}}
+    <br>
+    <img height ="200"  width="200" src="{{blog.image.url}}">
+    <br>
+    </div>
+    <div class="col-6">
+ 	  <form method="post"  enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+        </form>
+    </div>
+</div>
+
+
+<b>Comments:</b>
+{%for i in blog.comment_set.all %}
+{{forloop.counter}}.{{i.comment|linebreaks}}<br>
+
+{% endfor %}
+
+{% endblock %}
